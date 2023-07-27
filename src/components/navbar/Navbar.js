@@ -16,11 +16,11 @@ const links = [
     title: "Work",
     url: "/work",
   },
-  // {
-  //   id: 3,
-  //   title: "Blog",
-  //   url: "/blog",
-  // },
+  {
+    id: 3,
+    title: "Blog",
+    url: "/blog",
+  },
   {
     id: 4,
     title: "About",
@@ -39,6 +39,7 @@ const links = [
 ];
 export const Navbar = () => {
   const session = useSession();
+  console.log(session?.data?.user.name);
   return (
     <div className={styles.container}>
       <Link className={styles.logo} href="/">
@@ -52,9 +53,12 @@ export const Navbar = () => {
           </Link>
         ))}
         {session.status === "authenticated" && (
-          <button className={styles.logout} onClick={signOut}>
-            Logout
-          </button>
+          <div>
+            <p>{session?.data?.user.name}</p>
+            <button className={styles.logout} onClick={signOut}>
+              Logout
+            </button>
+          </div>
         )}
       </div>
     </div>
