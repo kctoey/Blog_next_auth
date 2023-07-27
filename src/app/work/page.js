@@ -1,13 +1,13 @@
 import React from "react";
-import Dashboard from "./dashboard";
+import Work from "./work";
 export const metadata = {
-  title: "Dashboard",
-  description: "Dashboard content",
+  title: "Work",
+  description: "Work Content",
 };
 const Page = () => {
   return (
     <div>
-      <Dashboard />
+      <Work />
     </div>
   );
 };

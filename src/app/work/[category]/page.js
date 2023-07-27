@@ -15,6 +15,7 @@ const getData = (cat) => {
   }
   return notFound();
 };
+
 const Category = ({ params }) => {
   const data = getData(params.category);
   return (
