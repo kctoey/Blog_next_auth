@@ -12,7 +12,7 @@ export const metadata = {
   description: "My first page of blog project",
 };
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -28,4 +28,5 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+export default RootLayout;

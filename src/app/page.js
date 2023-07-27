@@ -4,7 +4,7 @@ import Hero from "../../public/hero.png";
 import Button from "@/components/Button/Button";
 import styles from "./page.module.css";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -22,5 +22,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+export default Home;
 export const runtime = "edge";
