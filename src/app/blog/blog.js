@@ -25,8 +25,9 @@ const Blog = () => {
   const { data, error } = useSWR("fetchAllItems", fetchAllItems);
 
   async function fetchAllItems() {
-    const response = await fetch("http://localhost:3000/api/posts");
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const data = await response.json();
+    console.log(data);
     return data;
   }
   // const fetcher = (url) => axios.get(url).then((res) => res.data);
@@ -35,7 +36,7 @@ const Blog = () => {
   return (
     <div className={styles.mainContainer}>
       {data?.map((item) => (
-        <div key={item._id}>
+        <div key={item.id}>
           <div className={styles.imageContainer}>
             <Image
               src={item.img}
