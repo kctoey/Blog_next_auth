@@ -1,28 +1,12 @@
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-const moment = require("moment");
-async function getData() {
-  const res = await fetch("http://127.0.0.1:3000/api/posts");
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
+import moment from "moment";
 
-  const data = await res.json();
-  for (const post of data) {
-    const createdAt = post.createdAt;
-    const formattedTime = moment(createdAt).format("YYYY-MM-DD HH:mm:ss");
-
-    console.log("Post created at:", formattedTime);
-  }
-  return data;
-}
-
-const Blog = async () => {
-  const data = await getData();
+const Blog = ({ data }) => {
   return (
     <div className={styles.mainContainer}>
-      {data.map((item) => (
+      {data?.map((item) => (
         <div key={item._id}>
           <div className={styles.imageContainer}>
             <Image

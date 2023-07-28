@@ -6,22 +6,8 @@ export const GET = async (req) => {
   const username = url.searchParams.get("username");
   try {
     await connect();
-    const posts = await Post.find(username && { username }).limit(10);
+    const posts = await Post.find().limit(10);
     return new NextResponse(JSON.stringify(posts), { status: 200 });
-  } catch (error) {
-    return new NextResponse("Database error", { status: 500 });
-  }
-  //fetch
-};
-
-export const POST = async (req) => {
-  const body = await req.json();
-  const newPost = new Post(body);
-  try {
-    await connect();
-    await newPost.save();
-
-    return new NextResponse("Post has been created", { status: 201 });
   } catch (error) {
     return new NextResponse("Database error", { status: 500 });
   }
