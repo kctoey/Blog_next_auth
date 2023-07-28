@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import moment from "moment";
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
+  const res = await fetch(process.env.NEXTAUTH_URL + "/api/posts", {
     cache: "no-store",
   });
 
