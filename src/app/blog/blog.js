@@ -1,35 +1,36 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import moment from "moment";
 import useSWR from "swr";
 import axios from "axios";
-// async function getData() {
-//   try {
-//     const res = await fetch("http://127.0.0.1:3000/api/posts", {
-//       cache: "no-store",
-//     });
+async function getData() {
+  try {
+    const res = await fetch("http://127.0.0.1:3000/api/posts", {
+      cache: "no-store",
+    });
 
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch data");
-//     }
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
 
-//     return res.json();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-const Blog = () => {
-  const { data, error } = useSWR("fetchAllItems", fetchAllItems);
-
-  async function fetchAllItems() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const data = await response.json();
-    console.log(data);
-    return data;
+    return res.json();
+  } catch (error) {
+    console.log(error);
   }
+}
+
+const Blog = async () => {
+  const data = await getData();
+  // const { data, error } = useSWR("fetchAllItems", fetchAllItems);
+
+  // async function fetchAllItems() {
+  //   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  //   const data = await response.json();
+  //   console.log(data);
+  //   return data;
+  // }
   // const fetcher = (url) => axios.get(url).then((res) => res.data);
   // const { data, error } = useSWR("http://127.0.0.1:3000/api/posts", fetcher);
 
