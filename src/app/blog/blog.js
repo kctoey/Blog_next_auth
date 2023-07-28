@@ -22,11 +22,15 @@ import axios from "axios";
 // }
 
 const Blog = () => {
-  const fetcher = (url) => axios.get(url).then((res) => res.data);
-  const { data, error } = useSWR(
-    "https://blog-next-auth-k2uwbqn64-toeyknchprn-gmailcom.vercel.app/api/posts",
-    fetcher
-  );
+  const { data, error } = useSWR("fetchAllItems", fetchAllItems);
+
+  async function fetchAllItems() {
+    const response = await fetch("http://localhost:3000/api/posts");
+    const data = await response.json();
+    return data;
+  }
+  // const fetcher = (url) => axios.get(url).then((res) => res.data);
+  // const { data, error } = useSWR("http://127.0.0.1:3000/api/posts", fetcher);
 
   return (
     <div className={styles.mainContainer}>
