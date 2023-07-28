@@ -3,26 +3,26 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import moment from "moment";
-import useSWR from "swr";
 import axios from "axios";
-async function getData() {
-  try {
-    const res = await fetch("http://127.0.0.1:3000/api/posts", {
-      cache: "no-store",
-    });
+import useSWR from "swr";
+// async function getData() {
+//   try {
+//     const res = await fetch("http://127.0.0.1:3000/api/posts", {
+//       cache: "no-store",
+//     });
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch data");
+//     }
 
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     return await res.json();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
-const Blog = async () => {
-  const data = await getData();
+const Blog = () => {
+  // const data = await getData();
   // const { data, error } = useSWR("fetchAllItems", fetchAllItems);
 
   // async function fetchAllItems() {
@@ -31,13 +31,13 @@ const Blog = async () => {
   //   console.log(data);
   //   return data;
   // }
-  // const fetcher = (url) => axios.get(url).then((res) => res.data);
-  // const { data, error } = useSWR("http://127.0.0.1:3000/api/posts", fetcher);
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+  const { data, error } = useSWR("/api/posts", fetcher);
 
   return (
     <div className={styles.mainContainer}>
       {data?.map((item) => (
-        <div key={item.id}>
+        <div key={item._id}>
           <div className={styles.imageContainer}>
             <Image
               src={item.img}
