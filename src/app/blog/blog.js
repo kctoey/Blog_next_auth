@@ -3,17 +3,20 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import moment from "moment";
 async function getData() {
-  const res = await fetch(process.env.NEXTAUTH_URL + "/api/posts", {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch("http://localhost:3000/api/posts", {
+      cache: "no-store",
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
   }
-
-  return res.json();
 }
-
 const Blog = async () => {
   const data = await getData();
   return (
