@@ -1,24 +1,30 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import moment from "moment";
-async function getData() {
-  try {
-    const res = await fetch("http://127.0.0.1:3000/api/posts", {
-      cache: "no-store",
-    });
+import useSWR from "swr";
+import axios from "axios";
+// async function getData() {
+//   try {
+//     const res = await fetch("http://127.0.0.1:3000/api/posts", {
+//       cache: "no-store",
+//     });
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch data");
+//     }
 
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
-}
-const Blog = async () => {
-  const data = await getData();
+//     return res.json();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+const Blog = () => {
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+  const { data, error } = useSWR("http://127.0.0.1:3000/api/posts", fetcher);
+
   return (
     <div className={styles.mainContainer}>
       {data?.map((item) => (
