@@ -10,7 +10,7 @@ const Contact = () => {
       <div className={styles.content}>
         <div className={styles.imgContainer}>
           <Image
-            src="/contact.png"
+            src="/contact2.png"
             alt=""
             fill={true}
             className={styles.image}

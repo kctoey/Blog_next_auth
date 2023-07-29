@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Hero from "../../../public/hero.png";
+import about from "../../../public/about.png";
 import Button from "@/components/Button/Button";
 
 const About = () => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        <Image src={Hero} fill={true} alt="" className={styles.img} />
+        <Image src={about} fill={true} alt="" className={styles.img} />
         <div className={styles.imgText}>
           <h1 className={styles.imgTitle}>Digital Storytellers</h1>
           <h2 className={styles.imgDesc}>
