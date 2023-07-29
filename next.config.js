@@ -5,6 +5,7 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ["mongoose"],
   },
+
   images: {
     domains: ["images.pexels.com"],
     remotePatterns: [
