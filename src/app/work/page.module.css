@@ -49,3 +49,23 @@
 .item:hover .title {
   color: #53c28b;
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  .items {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .item {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .title {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    font-size: 20px;
+  }
+}

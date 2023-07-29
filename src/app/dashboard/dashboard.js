@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./page.module.css";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { AiOutlineFile, AiOutlineFileImage } from "react-icons/ai";
+
 import Image from "next/image";
 import { ImBin } from "react-icons/im";
 export const metadata = {
@@ -12,6 +14,9 @@ export const metadata = {
 };
 
 const Dashboard = () => {
+  const CLOUD_NAME = "dusruvngy";
+  const UPLOAD_PRESET = "my_blog_project";
+  const [photo, setPhoto] = useState("");
   // const [data, setData] = useState([]);
   // const [err, setErr] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
@@ -45,11 +50,74 @@ const Dashboard = () => {
   if (session.status === "unauthenticated") {
     router.push("/dashboard/login");
   }
+  const uploadImage = async () => {
+    if (!photo) return;
+
+    const formData = new FormData();
+
+    formData.append("file", photo);
+    formData.append("upload_preset", UPLOAD_PRESET);
+
+    try {
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await res.json();
+
+      const imageUrl = data["secure_url"];
+
+      return imageUrl;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (!photo || !title || !category || !desc) {
+  //     toast.error("All fields are required");
+  //     return;
+  //   }
+
+  //   try {
+  //     const imageUrl = await uploadImage();
+
+  //     const res = await fetch(`http://localhost:3000/api/blog`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${session?.user?.accessToken}`,
+  //       },
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         title,
+  //         desc,
+  //         category,
+  //         imageUrl,
+  //         authorId: session?.user?._id,
+  //       }),
+  //     });
+
+  //     if (!res.ok) {
+  //       throw new Error("Error occured");
+  //     }
+
+  //     const blog = await res.json();
+
+  //     router.push(`/blog/${blog?._id}`);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
     const desc = e.target[1].value;
-    const img = e.target[2].value;
+    const img = await uploadImage();
     const content = e.target[3].value;
     try {
       await fetch("/api/posts", {
@@ -112,11 +180,21 @@ const Dashboard = () => {
             className={styles.input}
             required
           />
-          <input
+          {/* <input
             type="text"
             placeholder="Image"
             className={styles.input}
             required
+          /> */}
+          <label htmlFor="image">
+            Upload Image <AiOutlineFileImage />
+          </label>
+          <input
+            className={styles.input}
+            id="image"
+            type="file"
+            style={{ display: "none" }}
+            onChange={(e) => setPhoto(e.target.files[0])}
           />
           <textarea
             placeholder="Content"

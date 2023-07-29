@@ -24,3 +24,16 @@
   cursor: pointer;
   border-radius: 3px;
 }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .logo {
+    margin-bottom: 10px;
+  }
+  .links {
+    margin-top: 10px;
+    font-size: 12px;
+    gap: 5px;
+  }
+}

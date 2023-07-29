@@ -7,6 +7,9 @@ const nextConfig = {
   },
   images: {
     domains: ["images.pexels.com"],
+    remotePatterns: [
+      { hostname: "res.cloudinary.com", protocol: "https", port: "" },
+    ],
   },
 };
 

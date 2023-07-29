@@ -68,3 +68,11 @@
 .google:hover {
   background-color: rgba(228, 97, 50, 0.803);
 }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .form {
+    width: 100%;
+  }
+}

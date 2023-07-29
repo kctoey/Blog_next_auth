@@ -41,3 +41,20 @@
 .desc {
   font-size: 20px;
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  .item {
+    margin-bottom: 25px;
+  }
+  .imgContainer {
+    height: 200px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .desc {
+    font-size: 15px;
+  }
+}

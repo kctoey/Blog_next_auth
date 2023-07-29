@@ -60,3 +60,18 @@
 .button:hover {
   background-color: #49b07d;
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  .posts {
+    flex-direction: column;
+  }
+  .post {
+    margin-bottom: 10px;
+  }
+  .imgContainer {
+    width: 100%;
+    height: auto;
+  }
+}
