@@ -35,7 +35,7 @@ const Blog = () => {
         //     <p>{moment(item.createdAt).format("YYYY-MM-DD HH:mm:ss")}</p>
         //   </div>
         // </Link>
-        <div className={styles.box}>
+        <div key={item.id} className={styles.box}>
           <div className={styles.imageContainer}>
             <Image
               src={item.img}
