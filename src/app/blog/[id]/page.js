@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import person from "../../../../public/person.jpg";
 async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`blog-next-auth-tau.vercel.app/api/posts/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
