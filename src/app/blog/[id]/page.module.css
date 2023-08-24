@@ -40,6 +40,7 @@
 
 .image {
   object-fit: cover;
+  border-radius: 25px;
 }
 
 .content {
@@ -51,18 +52,33 @@
 }
 @media (max-width: 768px) {
   .container {
-    padding: 0 10px;
+    padding: 10px;
   }
   .top {
-    flex-direction: column;
-  }
-  .info {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
   }
   .imageContainer {
-    height: 150px;
+    height: 100px;
+    width: 100px;
   }
-  .content {
-    font-size: 14px;
+
+  .image {
+    object-fit: contained;
+    border-radius: 25px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+  .author {
+    padding-top: 10px;
+    font-size: 12px;
+  }
+  .title {
+    font-size: 18px;
   }
 }
