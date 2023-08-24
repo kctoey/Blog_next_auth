@@ -22,7 +22,6 @@
 
 .image {
   object-fit: contain;
-  /* animation: move 3s infinite ease alternate; */
 }
 
 .form {
@@ -44,21 +43,18 @@
   font-weight: bold;
 }
 @media (max-width: 768px) {
-  .container {
-    padding: 0 10px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
   .title {
-    font-size: 30px;
+    font-size: 20px;
   }
   .imgContainer {
-    height: 200px;
+    display: none;
+  }
+  .image {
+    display: none;
   }
   .content {
     display: flex;
-    align-items: center;
+
     flex-direction: column;
   }
   .form {
@@ -69,5 +65,8 @@
   .textArea {
     padding: 5px;
     font-size: 16px;
+  }
+  .button {
+    width: 100%;
   }
 }

@@ -4,13 +4,9 @@ import React, { useState } from "react";
 import styles from "./navbar.module.css";
 import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 import { signOut, useSession } from "next-auth/react";
+import { AiFillHome } from "react-icons/ai";
 
 const links = [
-  {
-    id: 1,
-    title: "Home",
-    url: "/",
-  },
   {
     id: 2,
     title: "Work",
@@ -48,7 +44,7 @@ export const Navbar = () => {
   return (
     <div className={styles.container}>
       <Link className={styles.logo} href="/">
-        Home{" "}
+        <AiFillHome />
       </Link>
       <div className={styles.links}>
         <DarkModeToggle />

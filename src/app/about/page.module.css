@@ -53,4 +53,18 @@
   .desc {
     font-size: 14px;
   }
+  .imgTitle {
+    font-size: 12px;
+  }
+  .imgDesc {
+    font-size: 12px;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+  }
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+  }
 }

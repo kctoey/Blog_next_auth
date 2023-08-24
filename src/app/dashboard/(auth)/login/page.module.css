@@ -71,8 +71,12 @@
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    justify-content: center;
   }
   .form {
+    width: 100%;
+  }
+  .button {
     width: 100%;
   }
 }
