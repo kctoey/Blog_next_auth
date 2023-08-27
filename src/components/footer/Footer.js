@@ -4,7 +4,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <div className={styles.container}>
-      <div>@2023 Kingkong. All right reserved.</div>
+      <div>@2023 Toey Dev. All right reserved.</div>
       <div className={styles.social}>
         <Image
           className={styles.icon}

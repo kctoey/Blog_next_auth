@@ -33,7 +33,9 @@ const Blog = () => {
               <h1 className={styles.title}>{item.title}</h1>
               <p className={styles.desc}>{item.username}</p>
               <p className={styles.desc}>{item.desc}</p>
-              <p>{moment(item.createdAt).format("YYYY-MM-DD HH:mm:ss")}</p>
+              <p className={styles.date}>
+                {moment(item.createdAt).format("YYYY-MM-DD HH:mm:ss")}
+              </p>
             </div>
           </Link>
         ))}

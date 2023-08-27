@@ -54,8 +54,8 @@ export const Navbar = () => {
           </Link>
         ))}
         {session.status === "authenticated" && (
-          <div>
-            <p>{session?.data?.user.name}</p>
+          <div className={styles.contain}>
+            <p className={styles.username}>{session?.data?.user.name}</p>
             <button className={styles.logout} onClick={signOut}>
               Logout
             </button>
